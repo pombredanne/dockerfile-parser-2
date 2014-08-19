@@ -1,5 +1,5 @@
 {
-  "name": "dockerfile",
+  "name": "dockerfile-parser",
   "version": "0.0.0",
   "description": "parse Dockerfiles",
   "main": "index.js",
