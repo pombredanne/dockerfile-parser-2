@@ -25,8 +25,9 @@ var grammar =
     , Instruction: OR($('OnbuildInstruction'), $('ImmediateInstruction'))
     , FromInstruction: CONCAT('FROM', $('Image'))
     , OnbuildInstruction: CONCAT('ONBUILD', $('ImmediateInstruction'))
-    , ImmediateInstruction: OR($('CommandInstruction'), $('CopyInstruction'), $('WorkdirInstruction'), $('ExposeInstruction'))
+    , ImmediateInstruction: OR($('CommandInstruction'), $('EnvInstruction'), $('CopyInstruction'), $('WorkdirInstruction'), $('ExposeInstruction'))
     , CommandInstruction: CONCAT(OR('RUN', 'CMD', 'ENTRYPOINT'), $('ShellCommand'))
+    , EnvInstruction: CONCAT('ENV', $('RawStringArg'), $('RawStringArg'))
     , CopyInstruction: CONCAT(OR('ADD', 'COPY'), $('RawStringArg'), $('RawStringArg'))
     , WorkdirInstruction: CONCAT('WORKDIR', $('RawStringArg'))
     , ExposeInstruction: CONCAT('EXPOSE', LIST($('Port'), ''))
@@ -95,6 +96,14 @@ var grammar =
           { cmd: r.children[0].text().toLowerCase()
           , args: r.children[1].extra
           }
+      }
+    , EnvInstruction: function(r) {
+        r.extra =
+          { cmd: r.children[0].text().toLowerCase()
+          , key: r.children[1].text()
+          , val: r.children[2].text()
+          }
+
       }
     , ShellCommand: pass
     , RawString: text
