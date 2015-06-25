@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nathan7/dockerfile.js.git"
+    "url": "git://github.com/nathan7/dockerfile-parser.git"
   },
   "keywords": [
     "docker",
@@ -23,7 +23,7 @@
   "author": "Nathan Zadoks",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nathan7/dockerfile.js/issues"
+    "url": "https://github.com/nathan7/dockerfile-parser/issues"
   },
-  "homepage": "https://github.com/nathan7/dockerfile.js"
+  "homepage": "https://github.com/nathan7/dockerfile-parser"
 }
